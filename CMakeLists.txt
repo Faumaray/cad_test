@@ -1,0 +1,25 @@
+cmake_minimum_required(VERSION 3.25)
+
+set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+set(BUILD_SHARED_LIBS ON)
+set(CMAKE_POSITION_INDEPENDENT_CODE ON)
+
+
+set(3DLibrary_ROOT_DIR "${PROJECT_SOURCE_DIR}/3DLibrary")
+set(CMAKE_MODULE_PATH "${PROJECT_SOURCE_DIR}/CMake;${CMAKE_MODULE_PATH}")
+set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${PROJECT_SOURCE_DIR}/Build")
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${PROJECT_SOURCE_DIR}/Build")
+
+
+add_subdirectory("${PROJECT_SOURCE_DIR}/3DLibrary")
+
+set(CMAKE_POSITION_INDEPENDENT_CODE OFF)
+set(BUILD_SHARED_LIBS OFF)
+add_subdirectory("${PROJECT_SOURCE_DIR}/Sandbox")
+
+execute_process(
+    COMMAND ${CMAKE_COMMAND} -E create_symlink
+        ${CMAKE_BINARY_DIR}/compile_commands.json
+        ${CMAKE_SOURCE_DIR}/.vscode/compile_commands.json
+)
