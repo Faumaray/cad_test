@@ -21,4 +21,5 @@ public:
     virtual const char* getName() const = 0;
     virtual Point3D calculatePoint(double t) const = 0;
     virtual Vector3D calculateDerivative(double t) const = 0;
+    virtual ~Curve() = 0;
 };

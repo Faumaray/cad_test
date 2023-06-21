@@ -1,7 +1,7 @@
 #pragma once
 #include <Curve.hpp>
 
-class Ellipse : public Curve {
+class Ellipse : virtual public Curve {
 public:
     Ellipse(double radiusX, double radiusY);
     virtual Point3D calculatePoint(double t) const override;
