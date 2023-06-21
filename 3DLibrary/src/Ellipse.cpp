@@ -24,5 +24,9 @@ Vector3D Ellipse::calculateDerivative(double t) const {
     double dx_dt = -radiusX_ * std::sin(t);
     double dy_dt = radiusY_ * std::cos(t);
     double dz_dt = 0.0;
+    #ifdef Vector3DStruct
     return Vector3D(dx_dt, dy_dt, dz_dt);
+    #else
+    return Vector3D{dx_dt, dy_dt, dz_dt};
+    #endif
 }

@@ -25,5 +25,9 @@ Vector3D Helix::calculateDerivative(double t) const {
     double dx_dt = -radius_ * std::sin(t);
     double dy_dt = radius_ * std::cos(t);
     double dz_dt = step_ / (2.0 * std::numbers::pi);
+    #ifdef Vector3DStruct
     return Vector3D(dx_dt, dy_dt, dz_dt);
+    #else
+    return Vector3D{dx_dt, dy_dt, dz_dt};
+    #endif
 }

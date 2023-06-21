@@ -36,7 +36,11 @@ int main() {
         Vector3D derivative = curve->calculateDerivative(t);
         std::cout << curve->getName() << "\n";
         std::cout << "Point: (" << point.x << ", " << point.y << ", " << point.z << ")\n";
+        #ifdef Vector3DStruct
         std::cout << "Derivative: (" << derivative.dx << ", " << derivative.dy << ", " << derivative.dz << ")\n" << std::endl;
+        #else
+        std::cout << "Derivative: (" << derivative[0] << ", " << derivative[1] << ", " << derivative[3] << ")\n" << std::endl;
+        #endif
     }
 
     std::vector<Circle*> circles;
